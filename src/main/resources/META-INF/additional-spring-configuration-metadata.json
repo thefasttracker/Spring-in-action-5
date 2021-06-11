@@ -3,6 +3,11 @@
     {
       "name": "application.my-castom-property",
       "type": "java.lang.String",
-      "description": "Description for application.my-castom-property."
+      "description": "Description for application.my-castom-property :)."
+  },
+  {
+    "name": "taco-app.orders.page-size",
+    "type": "java.lang.String",
+    "description": "Sets the maximum number of orders to display in a list."
   }
 ] }

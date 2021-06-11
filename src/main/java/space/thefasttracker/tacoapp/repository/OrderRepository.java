@@ -1,25 +1,30 @@
 package space.thefasttracker.tacoapp.repository;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import space.thefasttracker.tacoapp.domains.Order;
+import space.thefasttracker.tacoapp.domains.User;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
 
-    List<Order> findByDeliveryZip(String deliveryZip);
+    Optional<List<Order>> findByDeliveryZip(String deliveryZip);
 
-    List<Order> readOrdersByDeliveryZipAndPlacedAtBetween(
+    Optional<List<Order>> readOrdersByDeliveryZipAndPlacedAtBetween(
             String deliveryZip, Date startDate, Date endDate);
 
-    List<Order> findByDeliveryNameAndDeliveryCityIgnoreCase(
+    Optional<List<Order>> findByDeliveryNameAndDeliveryCityIgnoreCase(
             String deliveryTo, String deliveryCity);
 
-    List<Order> findByDeliveryCityOrderByDeliveryName(String city);
+    Optional<List<Order>> findByDeliveryCityOrderByDeliveryName(String city);
+
+    List<Order> findByUserOrderByPlacedAtDesc(User user, Pageable pageable);
 
     @Query("select o from Order o where o.deliveryCity='Seattle'")
-    List<Order> customQuerySelect();
+    Optional<List<Order>> customQuerySelect();
 
 }

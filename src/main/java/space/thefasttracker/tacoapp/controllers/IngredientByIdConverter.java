@@ -1,8 +1,9 @@
-package space.thefasttracker.tacoapp.domains;
+package space.thefasttracker.tacoapp.controllers;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import space.thefasttracker.tacoapp.domains.Ingredient;
 import space.thefasttracker.tacoapp.repository.IngredientRepository;
 
 import java.util.Optional;

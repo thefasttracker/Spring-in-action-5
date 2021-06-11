@@ -1,0 +1,48 @@
+spring:
+  jpa:
+    generate-ddl: true
+  mustache:
+    expose-request-attributes: true
+  banner:
+      location: banner.txt
+
+taco-app:
+  orders:
+    pageSize: 10
+  discount:
+    codes:
+      abcdef: 10
+
+application:
+  my-castom-property: true # my custom property
+
+logging:
+#  file:
+#    name: logs/taco-app.log
+  level:
+#    root: warn
+    taco-app: info
+    org.springframework.security: debug
+
+management: #actuator (?)
+  endpoints:
+    web:
+      exposure:
+        include:
+          - beans
+          - health
+          - metrics
+          - env
+
+# spring.jpa.hibernate.ddl-auto=update
+
+
+server:
+  port: 8080
+
+--- #настроить разные профили
+
+#spring:
+#  profiles: development
+#server:
+#  port: 8090

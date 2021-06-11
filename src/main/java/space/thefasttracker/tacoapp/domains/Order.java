@@ -1,17 +1,19 @@
 package space.thefasttracker.tacoapp.domains;
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.CreditCardNumber;
+
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import org.hibernate.validator.constraints.CreditCardNumber;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @Data
 @Entity
 @Table(name="taco_order")
@@ -24,6 +26,9 @@ public class Order implements Serializable {
     private Long id;
 
     private Date placedAt;
+
+    @ManyToOne
+    private User user;
 
     @NotBlank(message="Delivery name is required")
     private String deliveryName;
@@ -47,6 +52,7 @@ public class Order implements Serializable {
             message="Must be formatted MM/YY")
     private String ccExpiration;
 
+    @Column(name="cc_cvv")
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
 
@@ -54,7 +60,9 @@ public class Order implements Serializable {
     private List<Taco> tacos = new ArrayList<>();
 
     public void addDesign(Taco design) {
+        log.info("taco design ->" + design);
         this.tacos.add(design);
+        log.info("this.tacos ->" + this.tacos);
     }
 
     @PrePersist
