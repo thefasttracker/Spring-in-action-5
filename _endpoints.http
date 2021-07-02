@@ -1,0 +1,27 @@
+GET http://localhost:8080/design/recent
+###
+
+GET http://localhost:8080/design/9
+Content-Type: application/json
+###
+
+POST http://localhost:8080/design
+Content-Type: application/json
+
+{}
+###
+
+POST http://localhost:8080/login
+Authorization: Basic ft2 ft2pass
+
+{}
+###
+
+GET http://localhost:8080/tacos
+###
+
+GET http://localhost:8080/orders
+###
+
+GET http://localhost:8080/orders?id=16
+###

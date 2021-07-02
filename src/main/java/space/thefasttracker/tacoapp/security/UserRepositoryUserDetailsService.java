@@ -1,4 +1,4 @@
-package space.thefasttracker.tacoapp.service;
+package space.thefasttracker.tacoapp.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

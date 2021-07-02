@@ -1,8 +1,8 @@
 package space.thefasttracker.tacoapp.repository;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import space.thefasttracker.tacoapp.domains.Order;
 import space.thefasttracker.tacoapp.domains.User;
 
@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-public interface OrderRepository extends CrudRepository<Order, Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
     Optional<List<Order>> findByDeliveryZip(String deliveryZip);
 
