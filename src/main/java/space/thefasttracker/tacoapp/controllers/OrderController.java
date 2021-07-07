@@ -19,7 +19,6 @@ public class OrderController {
         this.repo = repo;
     }
 
-
     @GetMapping(produces="application/json")
     public Iterable<Order> allOrders() {
         return repo.findAll();

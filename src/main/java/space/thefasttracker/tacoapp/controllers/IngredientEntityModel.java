@@ -1,15 +1,14 @@
 package space.thefasttracker.tacoapp.controllers;
 
-import lombok.Getter;
-import org.springframework.hateoas.EntityModel;
+import lombok.Data;
+import org.springframework.hateoas.RepresentationModel;
 import space.thefasttracker.tacoapp.domains.Ingredient;
 
-public class IngredientEntityModel extends EntityModel<IngredientEntityModel> {
+@Data
+public class IngredientEntityModel extends RepresentationModel<IngredientEntityModel> {
 
-    @Getter
     private String name;
 
-    @Getter
     private Ingredient.Type type;
 
     public IngredientEntityModel(Ingredient ingredient) {

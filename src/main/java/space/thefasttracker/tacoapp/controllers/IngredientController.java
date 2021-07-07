@@ -22,5 +22,4 @@ public class IngredientController {
     public Iterable<Ingredient> allIngredients() {
         return repo.findAll();
     }
-
 }

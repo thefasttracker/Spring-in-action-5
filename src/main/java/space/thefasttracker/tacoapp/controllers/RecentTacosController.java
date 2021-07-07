@@ -1,5 +1,6 @@
 package space.thefasttracker.tacoapp.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
@@ -15,6 +16,7 @@ import java.util.List;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+@Slf4j
 @RepositoryRestController
 public class RecentTacosController {
 
@@ -30,13 +32,12 @@ public class RecentTacosController {
                 0, 12, Sort.by("createdAt").descending());
         List<Taco> tacos = tacoRepo.findAll(page).getContent();
 
-        CollectionModel<TacoEntityModel> tacoResources =
-                new TacoEntityModelAssembler().toCollectionModel(tacos);
-        CollectionModel<TacoEntityModel> recentResources =
-                new CollectionModel<TacoEntityModel>(tacoResources);
+        CollectionModel<TacoEntityModel> tacoResources = new TacoEntityModelAssembler().toCollectionModel(tacos);
+        CollectionModel<TacoEntityModel> recentResources = CollectionModel.of(tacoResources);
 
         recentResources.add(
-                linkTo(methodOn(RecentTacosController.class).recentTacos())
+                linkTo(methodOn(RecentTacosController.class)
+                        .recentTacos())
                         .withRel("recents"));
         return new ResponseEntity<>(recentResources, HttpStatus.OK);
     }

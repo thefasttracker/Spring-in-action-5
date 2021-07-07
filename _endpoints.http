@@ -1,7 +1,7 @@
 GET http://localhost:8080/design/recent
 ###
 
-GET http://localhost:8080/design/9
+GET http://localhost:8080/design/2
 Content-Type: application/json
 ###
 
@@ -17,11 +17,20 @@ Authorization: Basic ft2 ft2pass
 {}
 ###
 
-GET http://localhost:8080/tacos
+GET http://localhost:8080/api/tacos/
 ###
 
 GET http://localhost:8080/orders
 ###
 
 GET http://localhost:8080/orders?id=16
+###
+
+GET http://localhost:8080/api/
+###
+
+http://localhost:8080/api/users
+###
+
+GET http://localhost:8080/api/tacos/recent/
 ###

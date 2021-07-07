@@ -6,7 +6,7 @@ import space.thefasttracker.tacoapp.domains.Taco;
 public class TacoEntityModelAssembler extends RepresentationModelAssemblerSupport<Taco, TacoEntityModel> {
 
     public TacoEntityModelAssembler() {
-        super(DesignTacoController.class, TacoEntityModel.class);
+        super(RecentTacosController.class, TacoEntityModel.class);
     }
 
     @Override
