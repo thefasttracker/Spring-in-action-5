@@ -143,9 +143,16 @@ public class TacoClient {
                 ingredient.getId());
     }
 
+    // --------- Traverson with RestTemplate examples ----------
     //
-    // Traverson with RestTemplate examples
-    //
+    //    ResourceSupport is now RepresentationModel
+    //    Resource is now EntityModel
+    //    Resources is now CollectionModel
+    //    PagedResources is now PagedModel
+    //    ResourceAssembler has been renamed to RepresentationModelAssembler
+    //    and its methods toResource(…) and toResources(…) have been renamed
+    //    to toModel(…) and toCollectionModel(…)
+    // ---------------------------------------------------------
 
     public Iterable<Ingredient> getAllIngredientsWithTraverson() {
         ParameterizedTypeReference<CollectionModel<Ingredient>> ingredientType =
@@ -160,6 +167,7 @@ public class TacoClient {
         return ingredients;
     }
 
+    // Traverson with RestClient
     public Ingredient addIngredient(Ingredient ingredient) {
         String ingredientsUrl = traverson
                 .follow("ingredients")

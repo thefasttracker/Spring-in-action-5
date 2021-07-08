@@ -40,7 +40,7 @@ public class RestExamples implements CommandLineRunner {
         };
     }
 
-  /*  @Bean
+    @Bean
     public CommandLineRunner putAnIngredient(TacoClient tacoClient) {
         return args -> {
             log.info("----------------------- PUT -------------------------");
@@ -50,7 +50,7 @@ public class RestExamples implements CommandLineRunner {
             Ingredient after = tacoClient.getIngredientById("LETC");
             log.info("AFTER:  " + after);
         };
-    }*/
+    }
 
   /*  @Bean
     public CommandLineRunner addAnIngredient(TacoClient tacoClient) {
@@ -109,7 +109,7 @@ public class RestExamples implements CommandLineRunner {
         return traverson;
     }
 
-/*    @Bean
+    @Bean
     public CommandLineRunner traversonGetIngredients(TacoClient tacoClient) {
         return args -> {
             Iterable<Ingredient> ingredients = tacoClient.getAllIngredientsWithTraverson();
@@ -120,7 +120,7 @@ public class RestExamples implements CommandLineRunner {
         };
     }
 
-    @Bean
+/*    @Bean
     public CommandLineRunner traversonSaveIngredient(TacoClient tacoClient) {
         return args -> {
             Ingredient pico = tacoClient.addIngredient(
@@ -132,9 +132,9 @@ public class RestExamples implements CommandLineRunner {
             }
             tacoClient.deleteIngredient(pico);
         };
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public CommandLineRunner traversonRecentTacos(TacoClient tacoClient) {
         return args -> {
             Iterable<Taco> recentTacos = tacoClient.getRecentTacosWithTraverson();
