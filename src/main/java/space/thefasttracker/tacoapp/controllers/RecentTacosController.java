@@ -20,10 +20,12 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RepositoryRestController
 public class RecentTacosController {
 
-    private TacoRepository tacoRepo;
+    private final TacoRepository tacoRepo;
+    private final TacoEntityModelAssembler tacoEntityModelAssembler;
 
-    public RecentTacosController(TacoRepository tacoRepo) {
+    public RecentTacosController(TacoRepository tacoRepo, TacoEntityModelAssembler tacoEntityModelAssembler) {
         this.tacoRepo = tacoRepo;
+        this.tacoEntityModelAssembler = tacoEntityModelAssembler;
     }
 
     @GetMapping(path="/tacos/recent", produces="application/hal+json")
@@ -32,7 +34,7 @@ public class RecentTacosController {
                 0, 12, Sort.by("createdAt").descending());
         List<Taco> tacos = tacoRepo.findAll(page).getContent();
 
-        CollectionModel<TacoEntityModel> tacoResources = new TacoEntityModelAssembler().toCollectionModel(tacos);
+        CollectionModel<TacoEntityModel> tacoResources = tacoEntityModelAssembler.toCollectionModel(tacos);
         CollectionModel<TacoEntityModel> recentResources = CollectionModel.of(tacoResources);
 
         recentResources.add(
