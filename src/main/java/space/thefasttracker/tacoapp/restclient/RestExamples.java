@@ -7,10 +7,8 @@ import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.client.Traverson;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import space.thefasttracker.tacoapp.domains.Ingredient;
 
 import java.net.URI;
-import java.util.List;
 
 @Component
 @Slf4j
@@ -25,7 +23,7 @@ public class RestExamples implements CommandLineRunner {
         return new RestTemplate();
     }
 
-    @Bean
+    /*@Bean
     public CommandLineRunner fetchIngredients(TacoClient tacoClient) {
         return args -> {
             log.info("----------------------- GET -------------------------");
@@ -38,9 +36,9 @@ public class RestExamples implements CommandLineRunner {
                 log.info("   - " + ingredient);
             }
         };
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     public CommandLineRunner putAnIngredient(TacoClient tacoClient) {
         return args -> {
             log.info("----------------------- PUT -------------------------");
@@ -50,7 +48,7 @@ public class RestExamples implements CommandLineRunner {
             Ingredient after = tacoClient.getIngredientById("LETC");
             log.info("AFTER:  " + after);
         };
-    }
+    }*/
 
   /*  @Bean
     public CommandLineRunner addAnIngredient(TacoClient tacoClient) {
@@ -109,7 +107,7 @@ public class RestExamples implements CommandLineRunner {
         return traverson;
     }
 
-    @Bean
+    /*@Bean
     public CommandLineRunner traversonGetIngredients(TacoClient tacoClient) {
         return args -> {
             Iterable<Ingredient> ingredients = tacoClient.getAllIngredientsWithTraverson();
@@ -118,7 +116,7 @@ public class RestExamples implements CommandLineRunner {
                 log.info("   -  " + ingredient);
             }
         };
-    }
+    }*/
 
 /*    @Bean
     public CommandLineRunner traversonSaveIngredient(TacoClient tacoClient) {

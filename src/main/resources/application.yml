@@ -1,4 +1,5 @@
 spring:
+  profiles: jms-template, jms-listener
   jpa:
     generate-ddl: true
     show-sql: true
@@ -8,6 +9,28 @@ spring:
   data:
     rest:
       base-path: /api
+  jms:
+    template:
+      default-destination: tacocloud.order.queue
+  artemis:
+    mode: embedded
+    broker-url: localhost
+    user: tacoweb
+    embedded:
+      enabled: true
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+    template:
+      default-topic: tacocloud.orders.topic
+    producer:
+      keySerializer: org.springframework.kafka.support.serializer.JsonSerializer
+      valueSerializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: tacocloud_kitchen
+      properties:
+#        spring.json.trusted.packages: tacos
   mustache:
     expose-request-attributes: true
   banner:
